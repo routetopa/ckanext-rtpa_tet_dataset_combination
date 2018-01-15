@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+
+{% block page %}
+
+
+
+  <style>
+            body {font-family: Verdana;
+				  background:white;}
+            .node {
+              border: solid 1px white;
+              font: 10px sans-serif;
+              line-height: 12px;
+              overflow: hidden;
+              position: absolute;
+              text-indent: 2px;
+            }
+            .c3-line, .c3-focused {stroke-width: 3px !important;}
+            .c3-bar {stroke: white !important; stroke-width: 1;}
+            .c3 text { font-size: 12px; color: grey;}
+            .tick line {stroke: white;}
+            .c3-axis path {stroke: grey;}
+            .c3-circle { opacity: 1 !important; }
+  </style> 
+<div
+	   data-module="rtpatetdatasetcobination_view"
+	   data-module-site_url="{{ h.dump_json(h.url('/', locale='default', qualified=true)) }}"
+       >
+TEST
+</div>
+
+<ul >
+	<li role="presentation" >
+		<a  href="#simplequery" aria-controls="simplequery" role="tab" data-toggle="tab">Query Builder</a>
+	</li>
+	<li role="presentation" >
+		<a href="#sqlquery" aria-controls="sqlquery" role="tab" data-toggle="tab">SQL Query</a>
+	</li>
+</ul>
+
+<div id="simplequery">
+
+
+	<div>
+		<div id="query-editor" class=""></div>
+	</div>
+
+	<form >
+		<input id="query-api" type="hidden" value="{{ QUERY_API }}"/>
+		<button id="trigger" type="button" ><i class="fa fa-bell-o" aria-hidden="true"></i>Alert</button>
+		<button id="download" type="button" ><i class="fa fa-download" aria-hidden="true"></i>Download</button>
+		<button id="exe-query" type="button" ><i class="fa fa-play" aria-hidden="true"></i>Run</button>
+	<span class="clearfix"></span>
+	</form>
+	<div id="trigger-form" style="display: none;">
+		<form id="trigger-create-form">
+			<legend>Create Trigger</legend>
+			<div >
+				<label for="trigger-text">Notification</label>
+				<textarea id="trigger-text"  rows="3" placeholder="i.e. Overspending in budget"></textarea>
+			</div>
+			<div class="form-group">
+				<label dor="trigger-email">Email</label>
+				<input id="trigger-email" type="email" placeholder="user@routetopa.eu">
+				<small id="trigger-help" >We'll never share your email with anyone else.</small>
+			</div>
+			<button type="submit" id="trigger-create" disabled>Create</button>
+		</form>
+		<div id="trigger-output"></div>
+	</div>
+	<div class="my-3">
+		<div id="query-output"></div>
+	</div>
+
+</div>
+
+<div id="sqlquery">
+
+	<div id="adv-query-editor" style="min-height: 100px;">SELECT  * from "{{ dataset_resource_id }}" LIMIT 10</div>
+	<div >
+		<button id="adv-exe-query" type="button" >Run</button>
+		<span ></span>
+	</div>
+	<div >
+		<div id="adv-query-output"></div>
+	</div>
+
+</div>
+
+
+{% endblock %}

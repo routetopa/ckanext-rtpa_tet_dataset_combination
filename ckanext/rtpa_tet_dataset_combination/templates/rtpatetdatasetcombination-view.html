@@ -47,7 +47,6 @@ TEST
 
 	<form >
 		<input id="query-api" type="hidden" value="{{ QUERY_API }}"/>
-		<button id="trigger" type="button" ><i class="fa fa-bell-o" aria-hidden="true"></i>Alert</button>
 		<button id="download" type="button" ><i class="fa fa-download" aria-hidden="true"></i>Download</button>
 		<button id="exe-query" type="button" ><i class="fa fa-play" aria-hidden="true"></i>Run</button>
 	<span class="clearfix"></span>
@@ -74,7 +73,7 @@ TEST
 
 </div>
 
-<div id="sqlquery">
+<div id="sqlquery" role="tabpanel"  class="tab-pane">
 
 	<div id="adv-query-editor" style="min-height: 100px;">SELECT  * from "{{ dataset_resource_id }}" LIMIT 10</div>
 	<div >
